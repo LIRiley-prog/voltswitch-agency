@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltSwitch — Client Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0b0b0f;
+            --bg-2: #111118;
+            --bg-3: #18182a;
+            --surface: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.07);
+            --white: #f5f5f7;
+            --white-70: rgba(245,245,247,0.7);
+            --white-40: rgba(245,245,247,0.4);
+            --white-20: rgba(245,245,247,0.2);
+            --amber: #f0a500;
+            --green: #10b981;
+            --blue: #3b82f6;
+            --rose: #f43f5e;
+            --violet: #8b5cf6;
+            --orange: #f97316;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .app-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .app-header h1 span { color: var(--amber); }
+        .header-actions { display: flex; gap: 12px; align-items: center; }
+        .stats-bar {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            flex: 1;
+            min-width: 160px;
+            padding: 20px 24px;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--white-40);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .stat-value.green { color: var(--green); }
+        .stat-value.amber { color: var(--amber); }
+        .stat-value.blue { color: var(--blue); }
+        .stat-value.violet { color: var(--violet); }
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+            background: var(--bg-2);
+            padding: 4px;
+            border-radius: 10px;
+            width: fit-content;
+        }
+        .tab {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--white-40);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .tab.active { background: var(--bg-3); color: var(--white); }
+        .tab:hover:not(.active) { color: var(--white-70); }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: var(--amber); color: var(--bg); }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(240,165,0,0.3); }
+        .btn-ghost {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--white-70);
+        }
+        .btn-ghost:hover { border-color: var(--white-40); color: var(--white); }
+        .btn-sm { padding: 6px 14px; font-size: 0.78rem; border-radius: 8px; }
+        .btn-danger { background: rgba(244,63,94,0.1); color: var(--rose); border: 1px solid rgba(244,63,94,0.2); }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        thead th {
+            text-align: left;
+            padding: 14px 18px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white-40);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-3);
+        }
+        tbody td {
+            padding: 14px 18px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr { transition: background 0.2s; }
+        tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .status-lead { background: rgba(59,130,246,0.12); color: var(--blue); }
+        .status-contacted { background: rgba(249,115,22,0.12); color: var(--orange); }
+        .status-proposal { background: rgba(139,92,246,0.12); color: var(--violet); }
+        .status-won { background: rgba(16,185,129,0.12); color: var(--green); }
+        .status-lost { background: rgba(244,63,94,0.08); color: var(--rose); }
+        .status-active { background: rgba(240,165,0,0.12); color: var(--amber); }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px;
+            width: 100%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+        }
+        .modal h2 span { color: var(--amber); }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--white-40);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--amber);
+        }
+        .form-group select { cursor: pointer; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form-actions { display: flex; gap: 12px; margin-top: 24px; }
+        .form-actions .btn { flex: 1; text-align: center; }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--white-40);
+        }
+        .empty-state h3 { font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px; color: var(--white-70); }
+
+        .td-actions { display: flex; gap: 6px; }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .form-row { grid-template-columns: 1fr; }
+            table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-header">
+        <h1>⚡ Volt<span>Switch</span> — Client Tracker</h1>
+        <div class="header-actions">
+            <button class="btn btn-ghost" onclick="exportData()">Export CSV</button>
+            <button class="btn btn-primary" onclick="openModal()">+ Add Client</button>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-label">Total Leads</div>
+            <div class="stat-value blue" id="statLeads">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Proposals Sent</div>
+            <div class="stat-value violet" id="statProposals">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Clients Won</div>
+            <div class="stat-value green" id="statWon">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Monthly Revenue</div>
+            <div class="stat-value amber" id="statRevenue">$0</div>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="lead">Leads</button>
+        <button class="tab" data-filter="contacted">Contacted</button>
+        <button class="tab" data-filter="proposal">Proposal</button>
+        <button class="tab" data-filter="won">Won</button>
+        <button class="tab" data-filter="active">Active</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Business</th>
+                <th>Contact</th>
+                <th>Industry</th>
+                <th>Package</th>
+                <th>Status</th>
+                <th>Date Added</th>
+                <th>Notes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="clientTable">
+        </tbody>
+    </table>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2 id="modalTitle">Add <span>New Client</span></h2>
+            <form id="clientForm">
+                <input type="hidden" id="editId" value="">
+                <div class="form-group">
+                    <label>Business Name</label>
+                    <input type="text" id="f_business" placeholder="e.g. Mario's Pizzeria" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contact Name</label>
+                        <input type="text" id="f_contact" placeholder="e.g. Mario Rossi">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="f_phone" placeholder="(555) 000-0000">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="f_email" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Industry</label>
+                        <select id="f_industry">
+                            <option value="">Select...</option>
+                            <option>Restaurant</option>
+                            <option>Contractor</option>
+                            <option>Salon / Beauty</option>
+                            <option>Fitness</option>
+                            <option>Healthcare</option>
+                            <option>Real Estate</option>
+                            <option>Auto Services</option>
+                            <option>Legal</option>
+                            <option>Retail</option>
+                            <option>Cleaning</option>
+                            <option>Photography</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Package</label>
+                        <select id="f_package">
+                            <option value="">Not decided</option>
+                            <option>Starter — $799</option>
+                            <option>Business — $1,999</option>
+                            <option>Premium — $4,499</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="f_status">
+                            <option value="lead">Lead</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="proposal">Proposal Sent</option>
+                            <option value="won">Won</option>
+                            <option value="lost">Lost</option>
+                            <option value="active">Active Client</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="f_notes" placeholder="How did you find them? Any details..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Client</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let clients = JSON.parse(localStorage.getItem('vs_clients') || '[]');
+        let currentFilter = 'all';
+
+        function save() {
+            localStorage.setItem('vs_clients', JSON.stringify(clients));
+        }
+
+        function render() {
+            const tbody = document.getElementById('clientTable');
+            const filtered = currentFilter === 'all' ? clients : clients.filter(c => c.status === currentFilter);
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><h3>No clients yet</h3><p>Click "+ Add Client" to start tracking</p></div></td></tr>`;
+            } else {
+                tbody.innerHTML = filtered.map((c, i) => {
+                    const realIndex = clients.indexOf(c);
+                    return `<tr>
+                        <td><strong>${esc(c.business)}</strong></td>
+                        <td>${esc(c.contact || '—')}<br><small style="color:var(--white-40)">${esc(c.phone || '')}</small></td>
+                        <td>${esc(c.industry || '—')}</td>
+                        <td>${esc(c.package || '—')}</td>
+                        <td><span class="status-badge status-${c.status}">${statusLabel(c.status)}</span></td>
+                        <td style="color:var(--white-40);font-size:0.82rem">${c.date}</td>
+                        <td style="max-width:200px;font-size:0.82rem;color:var(--white-40)">${esc(c.notes || '—')}</td>
+                        <td class="td-actions">
+                            <button class="btn btn-sm btn-ghost" onclick="editClient(${realIndex})">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteClient(${realIndex})">×</button>
+                        </td>
+                    </tr>`;
+                }).join('');
+            }
+            updateStats();
+        }
+
+        function statusLabel(s) {
+            const map = { lead: 'Lead', contacted: 'Contacted', proposal: 'Proposal', won: 'Won', lost: 'Lost', active: 'Active' };
+            return map[s] || s;
+        }
+
+        function esc(s) {
+            const d = document.createElement('div');
+            d.textContent = s;
+            return d.innerHTML;
+        }
+
+        function updateStats() {
+            document.getElementById('statLeads').textContent = clients.length;
+            document.getElementById('statProposals').textContent = clients.filter(c => c.status === 'proposal').length;
+            document.getElementById('statWon').textContent = clients.filter(c => c.status === 'won' || c.status === 'active').length;
+            const activeCount = clients.filter(c => c.status === 'active').length;
+            document.getElementById('statRevenue').textContent = '$' + (activeCount * 100).toLocaleString();
+        }
+
+        function openModal(editIndex) {
+            document.getElementById('modalOverlay').classList.add('show');
+            if (editIndex !== undefined) {
+                document.getElementById('modalTitle').innerHTML = 'Edit <span>Client</span>';
+                const c = clients[editIndex];
+                document.getElementById('editId').value = editIndex;
+                document.getElementById('f_business').value = c.business;
+                document.getElementById('f_contact').value = c.contact || '';
+                document.getElementById('f_phone').value = c.phone || '';
+                document.getElementById('f_email').value = c.email || '';
+                document.getElementById('f_industry').value = c.industry || '';
+                document.getElementById('f_package').value = c.package || '';
+                document.getElementById('f_status').value = c.status;
+                document.getElementById('f_notes').value = c.notes || '';
+            } else {
+                document.getElementById('modalTitle').innerHTML = 'Add <span>New Client</span>';
+                document.getElementById('editId').value = '';
+                document.getElementById('clientForm').reset();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('show');
+        }
+
+        function editClient(i) { openModal(i); }
+
+        function deleteClient(i) {
+            if (confirm('Remove ' + clients[i].business + '?')) {
+                clients.splice(i, 1);
+                save();
+                render();
+            }
+        }
+
+        document.getElementById('clientForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                business: document.getElementById('f_business').value,
+                contact: document.getElementById('f_contact').value,
+                phone: document.getElementById('f_phone').value,
+                email: document.getElementById('f_email').value,
+                industry: document.getElementById('f_industry').value,
+                package: document.getElementById('f_package').value,
+                status: document.getElementById('f_status').value,
+                notes: document.getElementById('f_notes').value,
+                date: new Date().toLocaleDateString()
+            };
+            const editId = document.getElementById('editId').value;
+            if (editId !== '') {
+                data.date = clients[parseInt(editId)].date;
+                clients[parseInt(editId)] = data;
+            } else {
+                clients.push(data);
+            }
+            save();
+            render();
+            closeModal();
+        });
+
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentFilter = tab.dataset.filter;
+                render();
+            });
+        });
+
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        function exportData() {
+            if (clients.length === 0) return alert('No data to export');
+            const headers = ['Business','Contact','Phone','Email','Industry','Package','Status','Date','Notes'];
+            const rows = clients.map(c => [c.business,c.contact,c.phone,c.email,c.industry,c.package,c.status,c.date,c.notes].map(v => '"'+(v||'').replace(/"/g,'""')+'"'));
+            const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'voltswitch-clients.csv';
+            a.click();
+        }
+
+        render();
+    </script>
+</body>
+</html>
