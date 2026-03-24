@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltSwitch — Flip the Switch on Your Online Presence</title>
+    <meta name="description" content="VoltSwitch builds jaw-dropping websites for local businesses. One switch is all it takes to go from invisible to unstoppable online.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cursor follower -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-mark">VS</div>
+                <span>voltswitch</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta-btn">Let's talk <span class="arrow-circle">→</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-left">
+            <div class="hero-eyebrow">
+                <div class="status-pulse"></div>
+                Available for new projects
+            </div>
+            <h1>
+                One switch.
+                <br>
+                <span class="hero-outline">Infinite</span> customers.
+                <br>
+                <span class="hero-highlight">Zero hassle.</span>
+            </h1>
+            <p class="hero-desc">
+                We flip the switch on your online presence. Custom websites 
+                that turn Google searches into ringing phones, packed schedules, 
+                and growing revenue. You run the business. We run the internet.
+            </p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-main">
+                    <span>Start your project</span>
+                    <div class="btn-shine"></div>
+                </a>
+                <a href="#work" class="btn-text">
+                    See the work
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h10M10 5l4 4-4 4"/></svg>
+                </a>
+            </div>
+            <div class="hero-proof">
+                <div class="proof-avatars">
+                    <div class="proof-avatar" style="background:#f0a500;">MR</div>
+                    <div class="proof-avatar" style="background:#e84393;">SJ</div>
+                    <div class="proof-avatar" style="background:#00b894;">DT</div>
+                    <div class="proof-avatar" style="background:#6c5ce7;">AK</div>
+                </div>
+                <div class="proof-text">
+                    <strong>50+ business owners</strong> trust us with their online presence
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-mockup">
+                <div class="mockup-browser">
+                    <div class="browser-dots">
+                        <span style="background:#ff5f57"></span>
+                        <span style="background:#ffbd2e"></span>
+                        <span style="background:#28ca41"></span>
+                    </div>
+                    <div class="browser-url">yourbusiness.com</div>
+                </div>
+                <div class="mockup-screen">
+                    <div class="screen-nav">
+                        <div class="screen-logo"></div>
+                        <div class="screen-nav-links">
+                            <div class="screen-nav-item"></div>
+                            <div class="screen-nav-item"></div>
+                            <div class="screen-nav-item"></div>
+                        </div>
+                    </div>
+                    <div class="screen-hero-block">
+                        <div class="screen-headline"></div>
+                        <div class="screen-headline short"></div>
+                        <div class="screen-cta-btn"></div>
+                    </div>
+                    <div class="screen-cards">
+                        <div class="screen-card">
+                            <div class="screen-card-icon"></div>
+                            <div class="screen-card-line"></div>
+                            <div class="screen-card-line short"></div>
+                        </div>
+                        <div class="screen-card">
+                            <div class="screen-card-icon"></div>
+                            <div class="screen-card-line"></div>
+                            <div class="screen-card-line short"></div>
+                        </div>
+                        <div class="screen-card">
+                            <div class="screen-card-icon"></div>
+                            <div class="screen-card-line"></div>
+                            <div class="screen-card-line short"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mockup-float mockup-float-1">
+                    <span class="float-icon">📈</span>
+                    <div>
+                        <strong>+340%</strong>
+                        <small>web traffic</small>
+                    </div>
+                </div>
+                <div class="mockup-float mockup-float-2">
+                    <span class="float-icon">📞</span>
+                    <div>
+                        <strong>+45</strong>
+                        <small>calls/month</small>
+                    </div>
+                </div>
+                <div class="mockup-float mockup-float-3">
+                    <span class="float-icon">⭐</span>
+                    <div>
+                        <strong>4.9</strong>
+                        <small>avg rating</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>Restaurants</span><span class="marquee-dot">✦</span>
+                <span>Plumbers</span><span class="marquee-dot">✦</span>
+                <span>Electricians</span><span class="marquee-dot">✦</span>
+                <span>Hair Salons</span><span class="marquee-dot">✦</span>
+                <span>Gyms</span><span class="marquee-dot">✦</span>
+                <span>Real Estate</span><span class="marquee-dot">✦</span>
+                <span>Law Firms</span><span class="marquee-dot">✦</span>
+                <span>Auto Shops</span><span class="marquee-dot">✦</span>
+                <span>Dentists</span><span class="marquee-dot">✦</span>
+                <span>Pet Services</span><span class="marquee-dot">✦</span>
+                <span>Landscaping</span><span class="marquee-dot">✦</span>
+                <span>Bakeries</span><span class="marquee-dot">✦</span>
+                <span>Spas</span><span class="marquee-dot">✦</span>
+                <span>Photography</span><span class="marquee-dot">✦</span>
+                <span>Construction</span><span class="marquee-dot">✦</span>
+                <span>Cleaning</span><span class="marquee-dot">✦</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>Restaurants</span><span class="marquee-dot">✦</span>
+                <span>Plumbers</span><span class="marquee-dot">✦</span>
+                <span>Electricians</span><span class="marquee-dot">✦</span>
+                <span>Hair Salons</span><span class="marquee-dot">✦</span>
+                <span>Gyms</span><span class="marquee-dot">✦</span>
+                <span>Real Estate</span><span class="marquee-dot">✦</span>
+                <span>Law Firms</span><span class="marquee-dot">✦</span>
+                <span>Auto Shops</span><span class="marquee-dot">✦</span>
+                <span>Dentists</span><span class="marquee-dot">✦</span>
+                <span>Pet Services</span><span class="marquee-dot">✦</span>
+                <span>Landscaping</span><span class="marquee-dot">✦</span>
+                <span>Bakeries</span><span class="marquee-dot">✦</span>
+                <span>Spas</span><span class="marquee-dot">✦</span>
+                <span>Photography</span><span class="marquee-dot">✦</span>
+                <span>Construction</span><span class="marquee-dot">✦</span>
+                <span>Cleaning</span><span class="marquee-dot">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem/Why Section -->
+    <section class="why-section" id="about">
+        <div class="container">
+            <div class="why-header">
+                <span class="label-tag">The problem</span>
+                <h2>
+                    You're losing money
+                    <br>
+                    <span class="text-amber">every single day</span>
+                    without a website.
+                </h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-number">01</div>
+                    <h3>You're invisible</h3>
+                    <p>97% of consumers search online before buying. If you're not showing up, you literally don't exist to them.</p>
+                    <div class="why-line"></div>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">02</div>
+                    <h3>Zero credibility</h3>
+                    <p>75% of people judge your business by your website. No website? They think you're either not legit or not serious.</p>
+                    <div class="why-line"></div>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">03</div>
+                    <h3>Competitors eat your lunch</h3>
+                    <p>Right now, someone is googling what you offer. And your competitor — the one WITH a website — is getting that customer.</p>
+                    <div class="why-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="services-header">
+                <span class="label-tag">What we do</span>
+                <h2>We handle <span class="text-amber">everything.</span><br>You handle your business.</h2>
+            </div>
+            <div class="services-list">
+                <div class="service-row">
+                    <div class="service-num">01</div>
+                    <div class="service-name">Web Design & Development</div>
+                    <div class="service-desc">Custom-designed websites that match your brand, convert visitors, and look insanely good on every device.</div>
+                    <div class="service-expand">+</div>
+                </div>
+                <div class="service-row">
+                    <div class="service-num">02</div>
+                    <div class="service-name">SEO & Google Domination</div>
+                    <div class="service-desc">We get you found on Google. Google Business setup, local SEO, keyword optimization — the works.</div>
+                    <div class="service-expand">+</div>
+                </div>
+                <div class="service-row">
+                    <div class="service-num">03</div>
+                    <div class="service-name">E-Commerce & Online Booking</div>
+                    <div class="service-desc">Sell products or take appointments online 24/7. Payment processing, scheduling, inventory — all set up.</div>
+                    <div class="service-expand">+</div>
+                </div>
+                <div class="service-row">
+                    <div class="service-num">04</div>
+                    <div class="service-name">Ongoing Maintenance & Hosting</div>
+                    <div class="service-desc">We keep your site lightning-fast, secure, and updated. You'll never touch a line of code.</div>
+                    <div class="service-expand">+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work/Portfolio Section -->
+    <section class="work-section" id="work">
+        <div class="container">
+            <div class="work-header">
+                <span class="label-tag">Our work</span>
+                <h2>Real sites.<br><span class="text-amber">Real results.</span></h2>
+                <p>Every website we build has a job: make your phone ring, fill your calendar, and grow your revenue.</p>
+            </div>
+            <div class="work-grid">
+                <div class="work-card work-card-wide">
+                    <div class="work-visual" style="background: linear-gradient(145deg, #1a1a2e 0%, #e84393 100%);">
+                        <div class="work-tag-float">Restaurant</div>
+                        <div class="work-mini-mockup">
+                            <div class="mini-nav-bar"></div>
+                            <div class="mini-hero" style="background: linear-gradient(to right, #fd79a8, #e84393);"></div>
+                            <div class="mini-line w70"></div>
+                            <div class="mini-line w50"></div>
+                            <div class="mini-grid">
+                                <div class="mini-box"></div>
+                                <div class="mini-box"></div>
+                                <div class="mini-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Bella's Italian Kitchen</h3>
+                        <p>Online menu + reservations + photo gallery</p>
+                        <div class="work-result">
+                            <span class="result-badge">+180% online reservations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-visual" style="background: linear-gradient(145deg, #1a1a2e 0%, #00b894 100%);">
+                        <div class="work-tag-float">Plumbing</div>
+                        <div class="work-mini-mockup">
+                            <div class="mini-nav-bar"></div>
+                            <div class="mini-hero" style="background: linear-gradient(to right, #55efc4, #00b894);"></div>
+                            <div class="mini-line w70"></div>
+                            <div class="mini-line w50"></div>
+                            <div class="mini-grid">
+                                <div class="mini-box"></div>
+                                <div class="mini-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>ProFix Plumbing</h3>
+                        <p>Quote request form + service areas</p>
+                        <div class="work-result">
+                            <span class="result-badge">+45 leads/month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-visual" style="background: linear-gradient(145deg, #1a1a2e 0%, #f0a500 100%);">
+                        <div class="work-tag-float">Salon</div>
+                        <div class="work-mini-mockup">
+                            <div class="mini-nav-bar"></div>
+                            <div class="mini-hero" style="background: linear-gradient(to right, #fdcb6e, #f0a500);"></div>
+                            <div class="mini-line w70"></div>
+                            <div class="mini-line w50"></div>
+                            <div class="mini-grid">
+                                <div class="mini-box"></div>
+                                <div class="mini-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Luxe Hair Studio</h3>
+                        <p>Online booking + stylist profiles</p>
+                        <div class="work-result">
+                            <span class="result-badge">+92% bookings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <span class="label-tag">Investment</span>
+                <h2>No hidden fees.<br><span class="text-amber">No surprises.</span></h2>
+                <p>Pick what fits. Scale when ready.</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <div class="price-tier">Starter</div>
+                    <div class="price-tagline">For new businesses getting online</div>
+                    <div class="price-amount"><span class="price-dollar">$</span>799</div>
+                    <div class="price-once">one-time</div>
+                    <ul class="price-list">
+                        <li>1–3 page website</li>
+                        <li>Mobile responsive</li>
+                        <li>Contact form</li>
+                        <li>Google Maps integration</li>
+                        <li>Basic SEO setup</li>
+                        <li>5 business day delivery</li>
+                    </ul>
+                    <a href="#contact" class="price-btn">Get started</a>
+                </div>
+                <div class="price-card price-card-featured">
+                    <div class="price-popular">Most Popular</div>
+                    <div class="price-tier">Business</div>
+                    <div class="price-tagline">For businesses ready to dominate</div>
+                    <div class="price-amount"><span class="price-dollar">$</span>1,999</div>
+                    <div class="price-once">one-time</div>
+                    <ul class="price-list">
+                        <li>5–7 page custom design</li>
+                        <li>Advanced SEO optimization</li>
+                        <li>Google Business setup</li>
+                        <li>Click-to-call + contact forms</li>
+                        <li>Photo gallery</li>
+                        <li>3 revision rounds</li>
+                        <li>7 business day delivery</li>
+                    </ul>
+                    <a href="#contact" class="price-btn price-btn-main">Get started</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-tier">Premium</div>
+                    <div class="price-tagline">For businesses that want it all</div>
+                    <div class="price-amount"><span class="price-dollar">$</span>4,499</div>
+                    <div class="price-once">one-time</div>
+                    <ul class="price-list">
+                        <li>10+ page fully custom site</li>
+                        <li>E-commerce or booking system</li>
+                        <li>Advanced SEO + analytics</li>
+                        <li>Blog / news section</li>
+                        <li>Social media integration</li>
+                        <li>Unlimited revisions</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#contact" class="price-btn">Get started</a>
+                </div>
+            </div>
+            <div class="maintenance-strip">
+                <div class="maint-left">
+                    <h4>🔄 Monthly Maintenance & Hosting</h4>
+                    <p>Hosting, backups, security, updates, and minor content changes.</p>
+                </div>
+                <div class="maint-right">
+                    <span class="maint-price">$99<small>/mo</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="process-header">
+                <span class="label-tag">How it works</span>
+                <h2>3 steps.<br><span class="text-amber">That's it.</span></h2>
+            </div>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-big-num">1</div>
+                    <div class="step-info">
+                        <h3>We talk</h3>
+                        <p>Quick call or form submission. You tell us about your business, your goals, and your vibe. Free, no pressure, no sales pitch.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-big-num">2</div>
+                    <div class="step-info">
+                        <h3>We build</h3>
+                        <p>We design and develop your site. You get to peek and give feedback. We don't stop until you're obsessed with it.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-big-num">3</div>
+                    <div class="step-info">
+                        <h3>You grow</h3>
+                        <p>We launch, set up Google, and start driving traffic. Then we keep things running smooth while you focus on your business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="test-header">
+                <span class="label-tag">Don't take our word for it</span>
+                <h2>Hear from people<br><span class="text-amber">who actually paid us.</span></h2>
+            </div>
+            <div class="test-grid">
+                <div class="test-card">
+                    <div class="test-quote">"</div>
+                    <p>I never thought I needed a website until these guys showed me what I was missing. Within a month, I was getting 3x more calls. Best money I ever spent on my business.</p>
+                    <div class="test-author">
+                        <div class="test-avatar" style="background: linear-gradient(135deg, #f0a500, #e84393);">MR</div>
+                        <div>
+                            <strong>Marco Rivera</strong>
+                            <span>Marco's Auto Repair</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <div class="test-quote">"</div>
+                    <p>The whole thing was stupidly easy. I sent them my logo and some photos, and boom — gorgeous website in under a week. My clients won't stop complimenting it.</p>
+                    <div class="test-author">
+                        <div class="test-avatar" style="background: linear-gradient(135deg, #e84393, #6c5ce7);">SJ</div>
+                        <div>
+                            <strong>Sarah Johnson</strong>
+                            <span>Luxe Nail Bar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <div class="test-quote">"</div>
+                    <p>I was losing jobs to guys who had websites. Now I get 10+ new leads every single week from my site. I literally wish I did this five years ago.</p>
+                    <div class="test-author">
+                        <div class="test-avatar" style="background: linear-gradient(135deg, #00b894, #0984e3);">DT</div>
+                        <div>
+                            <strong>David Thomas</strong>
+                            <span>Thomas Electric</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="faq-layout">
+                <div class="faq-left">
+                    <span class="label-tag">FAQ</span>
+                    <h2>Got<br>questions?</h2>
+                    <p>If it's not answered here, just <a href="#contact" class="text-amber">reach out</a>.</p>
+                </div>
+                <div class="faq-right">
+                    <div class="faq-item">
+                        <button class="faq-q"><span>How long does it take?</span><span class="faq-toggle">+</span></button>
+                        <div class="faq-a"><p>5–10 business days depending on your package. We'll give you a clear timeline before we start.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>Do I need to provide content?</span><span class="faq-toggle">+</span></button>
+                        <div class="faq-a"><p>Nope. We can write everything and source professional photos. Just give us your logo (if you have one) and we handle the rest.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>Will it work on phones?</span><span class="faq-toggle">+</span></button>
+                        <div class="faq-a"><p>100%. Every site we build is fully responsive — phones, tablets, laptops, everything.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>Do I own my website?</span><span class="faq-toggle">+</span></button>
+                        <div class="faq-a"><p>Yes, completely. Once you pay in full, the design, code, and content are all yours.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>Can you help me rank on Google?</span><span class="faq-toggle">+</span></button>
+                        <div class="faq-a"><p>Absolutely. Every package includes SEO. Our Business and Premium tiers include full Google Business setup and advanced local SEO.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="big-cta">
+        <div class="container">
+            <div class="big-cta-inner">
+                <h2>
+                    Stop losing customers
+                    <br>
+                    to competitors with websites.
+                </h2>
+                <p>Your next customer is googling your service right now. Let's make sure they find <em>you</em>.</p>
+                <a href="#contact" class="btn-main btn-main-lg">
+                    <span>Get your free consultation</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-left">
+                    <span class="label-tag">Let's build</span>
+                    <h2>Ready to get<br><span class="text-amber">more customers?</span></h2>
+                    <p>Fill this out. We'll get back to you within 24 hours with a custom plan and quote. No pressure, no spam.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📧</div>
+                            <div>
+                                <strong>Email</strong>
+                                <span>Liriley03@outlook.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📞</div>
+                            <div>
+                                <strong>Phone</strong>
+                                <span>(803) 460-5013</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">🕐</div>
+                            <div>
+                                <strong>Hours</strong>
+                                <span>Mon–Fri, 9am–7pm EST</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="guarantee-box">
+                        <strong>💯 Our Guarantee</strong>
+                        <p>If you're not happy with the design, you don't pay. Period.</p>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="you@email.com" required>
+                            </div>
+                            <div class="field">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" placeholder="(555) 000-0000">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="business">Business name</label>
+                            <input type="text" id="business" placeholder="Your business name">
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="industry">Industry</label>
+                                <select id="industry">
+                                    <option value="">Select...</option>
+                                    <option>Restaurant / Food</option>
+                                    <option>Contractor / Trades</option>
+                                    <option>Salon / Beauty</option>
+                                    <option>Fitness / Gym</option>
+                                    <option>Healthcare / Dental</option>
+                                    <option>Real Estate</option>
+                                    <option>Auto Services</option>
+                                    <option>Legal</option>
+                                    <option>Retail</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="budget">Budget</label>
+                                <select id="budget">
+                                    <option value="">Select...</option>
+                                    <option>Starter — $799</option>
+                                    <option>Business — $1,999</option>
+                                    <option>Premium — $4,499</option>
+                                    <option>Not sure yet</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="message">Tell us about your business</label>
+                            <textarea id="message" rows="4" placeholder="What do you do? What do you want your website to achieve?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-main btn-submit" id="submitBtn">
+                            <span>Send my free quote request</span>
+                            <div class="btn-shine"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <div class="logo-mark">VS</div>
+                        <span>voltswitch</span>
+                    </a>
+                    <p>Flipping the switch on local businesses since 2024.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h4>Navigate</h4>
+                        <a href="#work">Work</a>
+                        <a href="#services">Services</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <a href="#services">Web Design</a>
+                        <a href="#services">SEO</a>
+                        <a href="#services">E-Commerce</a>
+                        <a href="#services">Maintenance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 VoltSwitch. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
